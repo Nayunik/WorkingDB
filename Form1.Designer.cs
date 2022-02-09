@@ -32,8 +32,8 @@
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonConnectionToDB = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.progressBarConnectDB = new System.Windows.Forms.ProgressBar();
             this.textBoxConnectDB = new System.Windows.Forms.TextBox();
+            this.progressBarConnectDB = new System.Windows.Forms.ProgressBar();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +45,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(327, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -55,6 +55,7 @@
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // buttonConnectionToDB
             // 
@@ -76,15 +77,8 @@
             this.panel1.Controls.Add(this.buttonConnectionToDB);
             this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(328, 76);
+            this.panel1.Size = new System.Drawing.Size(325, 75);
             this.panel1.TabIndex = 2;
-            // 
-            // progressBarConnectDB
-            // 
-            this.progressBarConnectDB.Location = new System.Drawing.Point(3, 49);
-            this.progressBarConnectDB.Name = "progressBarConnectDB";
-            this.progressBarConnectDB.Size = new System.Drawing.Size(316, 20);
-            this.progressBarConnectDB.TabIndex = 2;
             // 
             // textBoxConnectDB
             // 
@@ -94,16 +88,27 @@
             this.textBoxConnectDB.Size = new System.Drawing.Size(200, 40);
             this.textBoxConnectDB.TabIndex = 3;
             // 
+            // progressBarConnectDB
+            // 
+            this.progressBarConnectDB.Location = new System.Drawing.Point(3, 49);
+            this.progressBarConnectDB.Name = "progressBarConnectDB";
+            this.progressBarConnectDB.Size = new System.Drawing.Size(316, 20);
+            this.progressBarConnectDB.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(327, 461);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Algerian", 9F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Working with DB";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
