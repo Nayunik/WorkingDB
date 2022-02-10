@@ -164,7 +164,7 @@ namespace WorkingDB
                     catch (Exception ex) { MessageBox.Show(ex.Message, "Exception!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                     
                 }
-                else if (stringRequest.ToLower().Contains("create "))
+                else 
                 {
                     commandMySql.Connection = connect;
                     commandMySql.CommandText = stringRequest;
@@ -175,12 +175,7 @@ namespace WorkingDB
                     }
                     catch (Exception ex) { MessageBox.Show(ex.Message, "Exception!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
-                else if (stringRequest.ToLower().Contains("delete "))
-                {
-
-                }
-                else { textBoxRequest.Text = "Неизвестная для программы команда!"; }
-
+                
                 connect.Close();
             }
         }
