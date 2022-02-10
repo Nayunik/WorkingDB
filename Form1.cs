@@ -26,24 +26,23 @@ namespace WorkingDB
 
         private void buttonConnectionToDB_Click(object sender, EventArgs e)
         {
+            panelCheck.BackColor = Color.DarkGray;
             textBoxConnectDB.Clear();
 
-            string connectionString = "server=localhost;database=nayunikdb;username=root;password=";
+            //string connectionString = "server=localhost;database=nayunikdb;username=root;password=";
 
-            //string connectionString = "server=" + textBoxServerName.Text + ";database=" + textBoxDataBase.Text + ";username=" + textBoxUsername + ";password=" + textBoxPassword.Text;
+            string connectionString = "server=" + textBoxServerName.Text + ";database=" + textBoxDataBase.Text + ";username=" + textBoxUsername + ";password=" + textBoxPassword.Text;
 
             MySqlConnection connect = getMySqlConnection(connectionString);
-            
+
             if (connect.State == ConnectionState.Open)
             {
                 textBoxConnectDB.Text += "Соединение открыто!\r\n";
                 connect.Close();
                 textBoxConnectDB.Text += "Соединение закрыто.";
+                panelCheck.BackColor = Color.Green;
             }
-            textBoxServerName.Text = "Server";
-            textBoxDataBase.Text = "Name DB";
-            textBoxUsername.Text = "Username";
-            textBoxPassword.Text = "Password";
+            else { panelCheck.BackColor = Color.Red; }
         }
 
         /// <summary>
@@ -123,6 +122,67 @@ namespace WorkingDB
         {
             if (textBoxPassword.Text == "Password")
             { textBoxPassword.Clear(); }
+        }
+
+        private void buttonExecuteRequest_Click(object sender, EventArgs e)
+        {
+            string connectionString = "server=" + textBoxServerName.Text + ";database=" + textBoxDataBase.Text + ";username=" + textBoxUsername + ";password=" + textBoxPassword.Text;
+            string stringRequest = textBoxRequest.Text;
+            textBoxRequest.Text = "";
+
+            //stringRequest = "select * from test;";
+            connectionString = "server=localhost;database=nayunikdb;username=root;password=";
+
+            MySqlConnection connect;
+            MySqlCommand commandMySql = new MySqlCommand();
+
+            connect = getMySqlConnection(connectionString);
+
+            if (connect.State == ConnectionState.Open)
+            {
+                if (stringRequest.ToLower().Contains("select "))
+                {
+                    commandMySql.Connection = connect;
+                    commandMySql.CommandText = stringRequest;
+                    try
+                    {
+                        MySqlDataReader reader = commandMySql.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            int numberColumn = reader.FieldCount;
+                            while (reader.Read())//прочитал строку
+                            {
+                                for (int indexColumn = 0; indexColumn < numberColumn; indexColumn++)//цикл по столбцам
+                                {
+                                    string nameOfColumn = reader.GetName(indexColumn);
+                                    textBoxRequest.Text += reader.GetString(nameOfColumn) + "\t";
+                                }
+                                textBoxRequest.Text += "\r\n";
+                            }
+                        }
+                    }
+                    catch (Exception ex) { MessageBox.Show(ex.Message, "Exception!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                    
+                }
+                else if (stringRequest.ToLower().Contains("create "))
+                {
+                    commandMySql.Connection = connect;
+                    commandMySql.CommandText = stringRequest;
+                    try
+                    {
+                        commandMySql.ExecuteNonQuery();
+                        textBoxRequest.Text = "Запрос успешно выполнен!";
+                    }
+                    catch (Exception ex) { MessageBox.Show(ex.Message, "Exception!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                }
+                else if (stringRequest.ToLower().Contains("delete "))
+                {
+
+                }
+                else { textBoxRequest.Text = "Неизвестная для программы команда!"; }
+
+                connect.Close();
+            }
         }
     }
 }
