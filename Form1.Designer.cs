@@ -32,6 +32,8 @@
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonConnectionToDB = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.textBoxRequest = new System.Windows.Forms.TextBox();
+            this.buttonExecuteRequest = new System.Windows.Forms.Button();
             this.panelCheck = new System.Windows.Forms.Panel();
             this.textBoxConnectDB = new System.Windows.Forms.TextBox();
             this.labelForConnectionString = new System.Windows.Forms.Label();
@@ -39,8 +41,10 @@
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.textBoxDataBase = new System.Windows.Forms.TextBox();
             this.textBoxServerName = new System.Windows.Forms.TextBox();
-            this.buttonExecuteRequest = new System.Windows.Forms.Button();
-            this.textBoxRequest = new System.Windows.Forms.TextBox();
+            this.mySQLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.executeRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelCheck.SuspendLayout();
@@ -48,18 +52,21 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Font = new System.Drawing.Font("Algerian", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.оПрограммеToolStripMenuItem});
+            this.оПрограммеToolStripMenuItem,
+            this.mySQLToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(327, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // оПрограммеToolStripMenuItem
             // 
-            this.оПрограммеToolStripMenuItem.Font = new System.Drawing.Font("Algerian", 9F);
+            this.оПрограммеToolStripMenuItem.Font = new System.Drawing.Font("Algerian", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
@@ -93,6 +100,29 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(325, 376);
             this.panelMain.TabIndex = 2;
+            // 
+            // textBoxRequest
+            // 
+            this.textBoxRequest.Location = new System.Drawing.Point(4, 179);
+            this.textBoxRequest.Multiline = true;
+            this.textBoxRequest.Name = "textBoxRequest";
+            this.textBoxRequest.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxRequest.Size = new System.Drawing.Size(320, 190);
+            this.textBoxRequest.TabIndex = 11;
+            // 
+            // buttonExecuteRequest
+            // 
+            this.buttonExecuteRequest.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonExecuteRequest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonExecuteRequest.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonExecuteRequest.Font = new System.Drawing.Font("Algerian", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExecuteRequest.Location = new System.Drawing.Point(4, 133);
+            this.buttonExecuteRequest.Name = "buttonExecuteRequest";
+            this.buttonExecuteRequest.Size = new System.Drawing.Size(318, 40);
+            this.buttonExecuteRequest.TabIndex = 10;
+            this.buttonExecuteRequest.Text = "Execute request";
+            this.buttonExecuteRequest.UseVisualStyleBackColor = false;
+            this.buttonExecuteRequest.Click += new System.EventHandler(this.buttonExecuteRequest_Click);
             // 
             // panelCheck
             // 
@@ -131,7 +161,6 @@
             this.textBoxPassword.Text = "Password";
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxPassword.Enter += new System.EventHandler(this.textBoxPassword_Enter);
-            this.textBoxPassword.Leave += new System.EventHandler(this.textBoxPassword_Leave);
             // 
             // textBoxUsername
             // 
@@ -166,28 +195,39 @@
             this.textBoxServerName.Enter += new System.EventHandler(this.textBoxServerName_Enter);
             this.textBoxServerName.Leave += new System.EventHandler(this.textBoxServerName_Leave);
             // 
-            // buttonExecuteRequest
+            // mySQLToolStripMenuItem
             // 
-            this.buttonExecuteRequest.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonExecuteRequest.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonExecuteRequest.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonExecuteRequest.Font = new System.Drawing.Font("Algerian", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExecuteRequest.Location = new System.Drawing.Point(4, 133);
-            this.buttonExecuteRequest.Name = "buttonExecuteRequest";
-            this.buttonExecuteRequest.Size = new System.Drawing.Size(318, 40);
-            this.buttonExecuteRequest.TabIndex = 10;
-            this.buttonExecuteRequest.Text = "Execute request";
-            this.buttonExecuteRequest.UseVisualStyleBackColor = false;
-            this.buttonExecuteRequest.Click += new System.EventHandler(this.buttonExecuteRequest_Click);
+            this.mySQLToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.informationToolStripMenuItem,
+            this.checkConnectionToolStripMenuItem,
+            this.executeRequestToolStripMenuItem});
+            this.mySQLToolStripMenuItem.Name = "mySQLToolStripMenuItem";
+            this.mySQLToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.mySQLToolStripMenuItem.Text = "MySQL";
             // 
-            // textBoxRequest
+            // informationToolStripMenuItem
             // 
-            this.textBoxRequest.Location = new System.Drawing.Point(4, 179);
-            this.textBoxRequest.Multiline = true;
-            this.textBoxRequest.Name = "textBoxRequest";
-            this.textBoxRequest.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxRequest.Size = new System.Drawing.Size(320, 190);
-            this.textBoxRequest.TabIndex = 11;
+            this.informationToolStripMenuItem.Name = "informationToolStripMenuItem";
+            this.informationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.informationToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.informationToolStripMenuItem.Text = "Information";
+            this.informationToolStripMenuItem.Click += new System.EventHandler(this.informationToolStripMenuItem_Click);
+            // 
+            // checkConnectionToolStripMenuItem
+            // 
+            this.checkConnectionToolStripMenuItem.Name = "checkConnectionToolStripMenuItem";
+            this.checkConnectionToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.checkConnectionToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.checkConnectionToolStripMenuItem.Text = "Check connection";
+            this.checkConnectionToolStripMenuItem.Click += new System.EventHandler(this.checkConnectionToolStripMenuItem_Click);
+            // 
+            // executeRequestToolStripMenuItem
+            // 
+            this.executeRequestToolStripMenuItem.Name = "executeRequestToolStripMenuItem";
+            this.executeRequestToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.executeRequestToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.executeRequestToolStripMenuItem.Text = "Execute request";
+            this.executeRequestToolStripMenuItem.Click += new System.EventHandler(this.executeRequestToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -231,6 +271,10 @@
         private System.Windows.Forms.Panel panelCheck;
         private System.Windows.Forms.TextBox textBoxRequest;
         private System.Windows.Forms.Button buttonExecuteRequest;
+        private System.Windows.Forms.ToolStripMenuItem mySQLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem informationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkConnectionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem executeRequestToolStripMenuItem;
     }
 }
 
