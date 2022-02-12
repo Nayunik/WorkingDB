@@ -36,6 +36,8 @@
             this.executeRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonConnectionToDB = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.flowLayoutPanelDataGrid = new System.Windows.Forms.FlowLayoutPanel();
+            this.dataGridViewContentDB = new System.Windows.Forms.DataGridView();
             this.textBoxRequest = new System.Windows.Forms.TextBox();
             this.buttonExecuteRequest = new System.Windows.Forms.Button();
             this.panelCheck = new System.Windows.Forms.Panel();
@@ -45,13 +47,13 @@
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.textBoxDataBase = new System.Windows.Forms.TextBox();
             this.textBoxServerName = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanelDataGrid = new System.Windows.Forms.FlowLayoutPanel();
-            this.dataGridViewContentDB = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.panelMain.SuspendLayout();
-            this.panelCheck.SuspendLayout();
             this.flowLayoutPanelDataGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewContentDB)).BeginInit();
+            this.panelCheck.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -129,6 +131,7 @@
             this.panelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMain.Controls.Add(this.flowLayoutPanelDataGrid);
             this.panelMain.Controls.Add(this.textBoxRequest);
             this.panelMain.Controls.Add(this.buttonExecuteRequest);
             this.panelMain.Controls.Add(this.panelCheck);
@@ -141,6 +144,32 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(325, 376);
             this.panelMain.TabIndex = 2;
+            // 
+            // flowLayoutPanelDataGrid
+            // 
+            this.flowLayoutPanelDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelDataGrid.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanelDataGrid.Controls.Add(this.dataGridViewContentDB);
+            this.flowLayoutPanelDataGrid.Location = new System.Drawing.Point(325, 0);
+            this.flowLayoutPanelDataGrid.Name = "flowLayoutPanelDataGrid";
+            this.flowLayoutPanelDataGrid.Size = new System.Drawing.Size(403, 376);
+            this.flowLayoutPanelDataGrid.TabIndex = 3;
+            // 
+            // dataGridViewContentDB
+            // 
+            this.dataGridViewContentDB.AllowUserToDeleteRows = false;
+            this.dataGridViewContentDB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewContentDB.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewContentDB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewContentDB.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewContentDB.Name = "dataGridViewContentDB";
+            this.dataGridViewContentDB.ReadOnly = true;
+            this.dataGridViewContentDB.Size = new System.Drawing.Size(400, 0);
+            this.dataGridViewContentDB.TabIndex = 0;
             // 
             // textBoxRequest
             // 
@@ -238,30 +267,20 @@
             this.textBoxServerName.Enter += new System.EventHandler(this.textBoxServerName_Enter);
             this.textBoxServerName.Leave += new System.EventHandler(this.textBoxServerName_Leave);
             // 
-            // flowLayoutPanelDataGrid
+            // dataGridView1
             // 
-            this.flowLayoutPanelDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanelDataGrid.Controls.Add(this.dataGridViewContentDB);
-            this.flowLayoutPanelDataGrid.Location = new System.Drawing.Point(325, 27);
-            this.flowLayoutPanelDataGrid.Name = "flowLayoutPanelDataGrid";
-            this.flowLayoutPanelDataGrid.Size = new System.Drawing.Size(403, 376);
-            this.flowLayoutPanelDataGrid.TabIndex = 3;
-            // 
-            // dataGridViewContentDB
-            // 
-            this.dataGridViewContentDB.AllowUserToDeleteRows = false;
-            this.dataGridViewContentDB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewContentDB.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridViewContentDB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewContentDB.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewContentDB.Name = "dataGridViewContentDB";
-            this.dataGridViewContentDB.ReadOnly = true;
-            this.dataGridViewContentDB.Size = new System.Drawing.Size(400, 0);
-            this.dataGridViewContentDB.TabIndex = 0;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersVisible = false;
+            this.dataGridView1.Location = new System.Drawing.Point(328, 27);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(400, 369);
+            this.dataGridView1.TabIndex = 3;
             // 
             // Form1
             // 
@@ -269,7 +288,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(731, 404);
-            this.Controls.Add(this.flowLayoutPanelDataGrid);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Algerian", 9F);
@@ -283,10 +302,11 @@
             this.menuStrip1.PerformLayout();
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
-            this.panelCheck.ResumeLayout(false);
-            this.panelCheck.PerformLayout();
             this.flowLayoutPanelDataGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewContentDB)).EndInit();
+            this.panelCheck.ResumeLayout(false);
+            this.panelCheck.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,6 +333,7 @@
         private System.Windows.Forms.ToolStripMenuItem executeRequestToolStripMenuItem;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDataGrid;
         private System.Windows.Forms.DataGridView dataGridViewContentDB;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

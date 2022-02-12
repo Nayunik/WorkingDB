@@ -118,8 +118,6 @@ namespace WorkingDB
         {
             string connectionString = "server=" + textBoxServerName.Text + ";database=" + textBoxDataBase.Text + ";username=" + textBoxUsername.Text + ";password=" + textBoxPassword.Text;
             string stringRequest = textBoxRequest.Text;
-            textBoxRequest.Text = "";
-
             MySqlConnection connect;
             MySqlCommand commandMySql = new MySqlCommand();
 
@@ -137,13 +135,20 @@ namespace WorkingDB
                         if (reader.HasRows)
                         {
                             int numberColumn = reader.FieldCount;
+                            for (int i = 0; i < numberColumn; i++)
+                            {
+                                dataGridView1.Columns.Add("", reader.GetName(i));
+                            }
+                            int ind = 0;
                             while (reader.Read())//прочитал строку
                             {
+                                dataGridView1.Rows.Add();
                                 for (int indexColumn = 0; indexColumn < numberColumn; indexColumn++)//цикл по столбцам
                                 {
                                     string nameOfColumn = reader.GetName(indexColumn);
-                                    textBoxRequest.Text += reader.GetString(nameOfColumn) + "\t";
+                                    dataGridView1.Rows[ind].Cells[indexColumn].Value = reader.GetString(nameOfColumn);
                                 }
+                                ind++;
                                 textBoxRequest.Text += "\r\n";
                             }
                         }
@@ -202,8 +207,6 @@ namespace WorkingDB
         {
             string connectionString = "server=" + textBoxServerName.Text + ";database=" + textBoxDataBase.Text + ";username=" + textBoxUsername.Text + ";password=" + textBoxPassword.Text;
             string stringRequest = textBoxRequest.Text;
-            textBoxRequest.Text = "";
-
             MySqlConnection connect;
             MySqlCommand commandMySql = new MySqlCommand();
 
@@ -221,13 +224,20 @@ namespace WorkingDB
                         if (reader.HasRows)
                         {
                             int numberColumn = reader.FieldCount;
+                            for (int i = 0; i < numberColumn; i++)
+                            {
+                                dataGridView1.Columns.Add("", reader.GetName(i));
+                            }
+                            int ind = 0;
                             while (reader.Read())//прочитал строку
                             {
+                                dataGridView1.Rows.Add();
                                 for (int indexColumn = 0; indexColumn < numberColumn; indexColumn++)//цикл по столбцам
                                 {
                                     string nameOfColumn = reader.GetName(indexColumn);
-                                    textBoxRequest.Text += reader.GetString(nameOfColumn) + "\t";
+                                    dataGridView1.Rows[ind].Cells[indexColumn].Value = reader.GetString(nameOfColumn);
                                 }
+                                ind++;
                                 textBoxRequest.Text += "\r\n";
                             }
                         }
@@ -250,5 +260,6 @@ namespace WorkingDB
                 connect.Close();
             }
         }
+
     }
 }
